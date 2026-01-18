@@ -1,4 +1,5 @@
 ﻿using ChatCommands;
+using CrabDevKit.Utilities;
 using SteamworksNative;
 using static ChatCommands.CommandArgumentParser;
 
@@ -54,7 +55,7 @@ namespace Overseer
                 return new BasicCommandResponse(["Why would you want to warn yourself?"], CommandResponseType.Private);
 
             string reason = args.Length == 0 ? "No reason provided." : args;
-            Utility.SendMessage(otherClientId, reason, Utility.MessageType.Styled, "Overseer");
+            ChatUtil.SendMessage(otherClientId, $"Warning: {reason}", ChatUtil.MessageType.Styled, "Overseer");
             return new BasicCommandResponse([$"Warned '{SteamFriends.GetFriendPersonaName(new(otherClientId))}'", $"Reason: '{reason}'"], CommandResponseType.Private);
         }
     }

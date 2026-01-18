@@ -96,7 +96,7 @@ namespace Overseer
         [HarmonyPrefix]
         internal static bool PreLobbyManagerForceDisconnectPlayer(ulong param_1)
         {
-            if (param_1 == Utility.HostClientId)
+            if (param_1 == SteamManager.Instance.originalLobbyOwnerId.m_SteamID)
                 return false;
 
             if (GameManager.Instance && GameManager.Instance.activePlayers.ContainsKey(param_1) && !GameManager.Instance.activePlayers[param_1].dead)

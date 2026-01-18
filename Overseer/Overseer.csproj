@@ -11,7 +11,7 @@
 	<PropertyGroup>
 		<AssemblyName>lammas123.Overseer</AssemblyName>
 		<Product>Overseer</Product>
-		<Version>1.1.0</Version>
+		<Version>1.1.1</Version>
 
 		<SteamDir Condition="'$(SteamDir)' == ''">S:\Steam</SteamDir>
 		<ProfileDir Condition="'$(ProfileDir)' == ''">S:\Steam\steamapps\common\Crab Game</ProfileDir>
@@ -119,6 +119,10 @@
 		</Reference>
 
 		<!-- Other Mod Assemblies -->
+		<Reference Include="CrabDevKit">
+			<HintPath>$(DepsDir)\CrabDevKit\bin\Release\netstandard2.1\lammas123.CrabDevKit.dll</HintPath>
+		</Reference>
+		
 		<Reference Include="PersistentData">
 			<HintPath>$(DepsDir)\General\PersistentData\bin\Release\netstandard2.1\lammas123.PersistentData.dll</HintPath>
 		</Reference>
