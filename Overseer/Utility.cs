@@ -9,7 +9,7 @@ namespace Overseer
     internal static class Utility
     {
         internal static int MaxChatMessageLength
-            => GameUiChatBox.Instance != null ? GameUiChatBox.Instance.field_Private_Int32_0 : 80;
+            => Chatbox.Instance != null ? Chatbox.Instance.field_Private_Int32_0 : 80;
 
         internal static ulong HostClientId
             => SteamManager.Instance.field_Private_CSteamID_1.m_SteamID;
@@ -44,7 +44,7 @@ namespace Overseer
                 displayName ??= string.Empty;
 
             List<byte> bytes = [];
-            bytes.AddRange(BitConverter.GetBytes((int)ServerSendType.sendMessage));
+            bytes.AddRange(BitConverter.GetBytes((int)ServerPackets.sendMessage));
             bytes.AddRange(BitConverter.GetBytes(senderClientId));
 
             bytes.AddRange(BitConverter.GetBytes(displayName.Length));
@@ -70,7 +70,7 @@ namespace Overseer
                     for (int i = 0; i < clientIdBytes.Length; i++)
                         packet.field_Private_List_1_Byte_0[i + 8] = clientIdBytes[i];
                 }
-                SteamPacketManager.SendPacket(new CSteamID(clientId), packet, 8, SteamPacketDestination.ToClient);
+                SteamPacketManager.SendPacket(new CSteamID(clientId), packet, 8, SteamPacketManager_NetworkChannel.ToClient);
             }
         }
 
